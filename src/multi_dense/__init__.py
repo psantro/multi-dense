@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from multi-dense!")
+from .multi_dense import MultiDense
