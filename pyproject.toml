@@ -1,7 +1,7 @@
 [project]
 name = "multi-dense"
-version = "0.1.0"
-description = "Add your description here"
+version = "1.0.0"
+description = "A Keras heterogeneous activations layer implementation."
 readme = "README.md"
 authors = [
     { name = "psantro", email = "psantro@alu.upo.es" }
