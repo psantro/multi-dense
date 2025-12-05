@@ -12,9 +12,6 @@ dependencies = [
     "types-tensorflow>=2.18.0.20251008",
 ]
 
-[project.scripts]
-multi-dense = "multi_dense:main"
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
