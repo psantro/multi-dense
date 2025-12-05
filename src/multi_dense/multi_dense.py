@@ -12,21 +12,21 @@ class MultiDense(tf.keras.layers.Layer):
         self.activations = [
             tf.keras.activations.get(activation) for activation in activations
         ]
-        self.total_units = sum(self.units)
 
     def build(self, input_shape):
         input_dim = int(input_shape[-1])
 
+        total_units = sum(self.units)
         self.w = self.add_weight(
             name="kernel",
-            shape=(input_dim, self.total_units),
+            shape=(input_dim, total_units),
             initializer="glorot_uniform",
             trainable=True,
         )
 
         self.b = self.add_weight(
             name="bias",
-            shape=(self.total_units,),
+            shape=(total_units,),
             initializer="zeros",
             trainable=True,
         )
