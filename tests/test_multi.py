@@ -1,7 +1,5 @@
 import pytest
 import tensorflow as tf
-from tensorflow.keras import Input, Model
-from tensorflow.keras.layers import Dense, Layer
 
 from multi_dense import MultiDense
 
@@ -13,7 +11,7 @@ class TestMultiDense:
 
     @staticmethod
     def test_inheritance():
-        assert issubclass(MultiDense, Layer)
+        assert issubclass(MultiDense, tf.keras.layers.Layer)
 
     def test_output_shape(self, activations):
         units = [4, 3, 2]
@@ -31,7 +29,7 @@ class TestMultiDense:
 
         x = tf.random.normal((2, 5))
         y = layer(x)
-        z = tf.matmul(x, layer.w) + layer.b
+        z = tf.matmul(x, layer.kernel) + layer.bias
 
         z_splits = tf.split(z, units, axis=-1)
         y_splits = tf.split(y, units, axis=-1)
@@ -54,10 +52,10 @@ class TestMultiDense:
             assert g is not None, f"No gradient for {v.name}"
 
     def test_integration_with_model(self, activations):
-        inputs = Input(shape=(8,))
+        inputs = tf.keras.Input(shape=(8,))
         x = MultiDense([4, 4, 4], activations)(inputs)
-        outputs = Dense(1)(x)
-        model = Model(inputs, outputs)
+        outputs = tf.keras.layers.Dense(1)(x)
+        model = tf.keras.Model(inputs, outputs)
 
         model.compile(
             optimizer="adam",

@@ -340,10 +340,9 @@ wheels = [
 
 [[package]]
 name = "multi-dense"
-version = "0.1.0"
+version = "1.0.0"
 source = { editable = "." }
 dependencies = [
-    { name = "numpy" },
     { name = "tensorflow" },
     { name = "types-tensorflow" },
 ]
@@ -357,7 +356,6 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "numpy", specifier = ">=2.3.5" },
     { name = "tensorflow", specifier = ">=2.20.0" },
     { name = "types-tensorflow", specifier = ">=2.18.0.20251008" },
 ]
